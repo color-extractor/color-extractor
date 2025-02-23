@@ -10,12 +10,20 @@ function App() {
   const [hexColorArray, setHexColorArray] = useState([]);
 
   const fetchRgbData = async (url) => {
-    const encodedUrl = encodeURIComponent(url);
+    const encodedUrl = encodeURIComponent(checkUrl(url));
     const response = await fetch(`${SERVER_URL}/crawl/${encodedUrl}`);
     const jsonResponseData = await response.json();
     const mainColor = getMainColor(jsonResponseData["data"]) || [];
 
     setHexColorArray(mainColor);
+  };
+
+  const checkUrl = (url) => {
+    if (url.startsWith("www.")) {
+      return `https://${url}`;
+    } else if (url.startsWith("https")) {
+      return url;
+    }
   };
 
   return (
