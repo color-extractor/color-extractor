@@ -1,20 +1,17 @@
 import ColorBox from "./colorBox";
 
-function SearchResultBox({ rgbData }) {
-  const rgbToHex = (rgb) => {
-    const conversionProcess = (i) => {
-      const hex = parseInt(i).toString(16);
-      return hex.length === 1 ? "0" + hex : hex;
-    };
-    return `#${conversionProcess(rgb[0])}${conversionProcess(rgb[1])}${conversionProcess(rgb[2])}`;
-  };
-
-  const hexCodeArray = rgbData["data"] ? rgbData["data"].map(rgbToHex) : [];
-
+function SearchResultBox({ hexColorArray }) {
   return (
     <>
-      <div className="p-4 m-10 bg-gray-500 items-center">
-        <ColorBox hexCodeArray={hexCodeArray} />
+      <div className="flex bg-gray-800 h-40 p-2 mt-16 w-full overflow-hidden items-center">
+        {hexColorArray &&
+          hexColorArray.map((color, index) => (
+            <ColorBox
+              key={index}
+              color={color}
+              rank={index + 1}
+            />
+          ))}
       </div>
     </>
   );
