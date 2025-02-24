@@ -8,14 +8,17 @@ import getMainColor from "./utils/getMainColor";
 
 function App() {
   const [hexColorArray, setHexColorArray] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchRgbData = async (url) => {
+    setLoading(true);
     const encodedUrl = encodeURIComponent(checkUrl(url));
     const response = await fetch(`${SERVER_URL}/crawl/${encodedUrl}`);
     const jsonResponseData = await response.json();
     const mainColor = getMainColor(jsonResponseData["data"]) || [];
 
     setHexColorArray(mainColor);
+    setLoading(false);
   };
 
   const checkUrl = (url) => {
@@ -30,7 +33,10 @@ function App() {
     <>
       <h2>Color Extractor</h2>
       <SearchInputBox onSearch={fetchRgbData} />
-      <SearchResultBox hexColorArray={hexColorArray} />
+      <SearchResultBox
+        hexColorArray={hexColorArray}
+        loading={loading}
+      />
     </>
   );
 }
