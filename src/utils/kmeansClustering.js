@@ -1,93 +1,102 @@
-const kmeansClustering = (points, k, min_diff) => {
-  const plen = points.length;
-  const clusters = [];
-  const seen = [];
+const kmeansClustering = (rgbDataArray, k, min_diff) => {
+  const totalRgbDataArrayCount = rgbDataArray.length;
+  const clusterGroups = [];
+  const selectedInitialIndex = [];
 
-  while (clusters.length < k) {
-    const idx = Math.floor(Math.random() * plen);
+  while (clusterGroups.length < k) {
+    const randomArrayIndex = Math.floor(Math.random() * totalRgbDataArrayCount);
     let found = false;
-    for (let i = 0; i < seen.length; i++) {
-      if (idx === seen[i]) {
+    for (let i = 0; i < selectedInitialIndex.length; i++) {
+      if (randomArrayIndex === selectedInitialIndex[i]) {
         found = true;
         break;
       }
     }
     if (!found) {
-      seen.push(idx);
-      clusters.push([points[idx], [points[idx]]]);
+      selectedInitialIndex.push(randomArrayIndex);
+      clusterGroups.push([
+        rgbDataArray[randomArrayIndex],
+        [rgbDataArray[randomArrayIndex]],
+      ]);
     }
   }
 
   while (true) {
-    const plists = [];
+    const clusteredRgbGroups = [];
 
     for (let i = 0; i < k; i++) {
-      plists.push([]);
+      clusteredRgbGroups.push([]);
     }
 
-    for (let j = 0; j < plen; j++) {
-      const p = points[j];
+    for (let j = 0; j < totalRgbDataArrayCount; j++) {
+      const currentRgbData = rgbDataArray[j];
       let smallest_distance = 10000000;
-      let idx = 0;
+      let nearestClusterIndex = 0;
 
       for (let i = 0; i < k; i++) {
-        let distance = euclidean(p, clusters[i][0]);
+        let distance = euclidean(currentRgbData, clusterGroups[i][0]);
         if (distance < smallest_distance) {
           smallest_distance = distance;
-          idx = i;
+          nearestClusterIndex = i;
         }
       }
-      plists[idx].push(p);
+      clusteredRgbGroups[nearestClusterIndex].push(currentRgbData);
     }
 
     let diff = 0;
     for (let i = 0; i < k; i++) {
-      const old = clusters[i];
-      const center = calculateCenter(plists[i], 3);
-      const new_cluster = [center, plists[i]];
-      const dist = euclidean(old[0], center);
-      clusters[i] = new_cluster;
-      diff = diff > dist ? diff : dist;
+      const previousCluster = clusterGroups[i];
+      const newClusterCenter = calculateCenter(clusteredRgbGroups[i], 3);
+      const updatedClusterData = [newClusterCenter, clusteredRgbGroups[i]];
+      const distanceBetweenCenters = euclidean(
+        previousCluster[0],
+        newClusterCenter
+      );
+      clusterGroups[i] = updatedClusterData;
+      diff = diff > distanceBetweenCenters ? diff : distanceBetweenCenters;
     }
     if (diff < min_diff) {
       break;
     }
   }
-  return clusters;
+  return clusterGroups;
 };
 
 const euclidean = (p1, p2) => {
-  let s = 0;
+  let sum = 0;
   const length = p1.length;
   for (let i = 0; i < length; i++) {
-    s += (p1[i] - p2[i]) * (p1[i] - p2[i]);
+    sum += (p1[i] - p2[i]) * (p1[i] - p2[i]);
   }
-  return s ** 0.5;
+  return sum ** 0.5;
 };
 
-const calculateCenter = (points, n) => {
-  const vals = new Array(n).fill(0);
-  const plen = points.length;
+const calculateCenter = (clusteredRgbData, n) => {
+  const channelSumRgbData = new Array(n).fill(0);
+  const clusteredRgbDataCount = clusteredRgbData.length;
 
-  if (plen === 0) {
+  if (clusteredRgbDataCount === 0) {
     return [128, 128, 128];
   }
 
-  for (let i = 0; i < plen; i++) {
+  for (let i = 0; i < clusteredRgbDataCount; i++) {
     for (let j = 0; j < n; j++) {
-      vals[j] += points[i][j];
+      channelSumRgbData[j] += clusteredRgbData[i][j];
     }
   }
 
   for (let i = 0; i < n; i++) {
-    vals[i] = plen === 0 ? 128 : vals[i] / plen;
+    channelSumRgbData[i] =
+      clusteredRgbDataCount === 0
+        ? 128
+        : channelSumRgbData[i] / clusteredRgbDataCount;
   }
 
-  const fixedVals = vals.map((v, index) =>
-    isNaN(v) ? points[0][index] : Math.round(v)
+  const finalClusterCenter = channelSumRgbData.map((rgbData, index) =>
+    isNaN(rgbData) ? clusteredRgbData[0][index] : Math.round(rgbData)
   );
 
-  return fixedVals;
+  return finalClusterCenter;
 };
 
 export default kmeansClustering;
