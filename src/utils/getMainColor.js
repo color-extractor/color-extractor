@@ -20,7 +20,7 @@ const getMainColor = (rgbArray) => {
 
 export const rgbToHex = (rgb) => {
   const th = (i) => {
-    let h = Math.round(i).toString(16);
+    const h = Math.round(i).toString(16);
     return h.length === 1 ? "0" + h : h;
   };
   const hex = `#${th(rgb[0])}${th(rgb[1])}${th(rgb[2])}`;

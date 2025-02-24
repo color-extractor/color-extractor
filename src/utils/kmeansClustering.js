@@ -1,10 +1,10 @@
 const kmeansClustering = (points, k, min_diff) => {
-  let plen = points.length;
-  let clusters = [];
-  let seen = [];
+  const plen = points.length;
+  const clusters = [];
+  const seen = [];
 
   while (clusters.length < k) {
-    let idx = Math.floor(Math.random() * plen);
+    const idx = Math.floor(Math.random() * plen);
     let found = false;
     for (let i = 0; i < seen.length; i++) {
       if (idx === seen[i]) {
@@ -19,14 +19,14 @@ const kmeansClustering = (points, k, min_diff) => {
   }
 
   while (true) {
-    let plists = [];
+    const plists = [];
 
     for (let i = 0; i < k; i++) {
       plists.push([]);
     }
 
     for (let j = 0; j < plen; j++) {
-      let p = points[j];
+      const p = points[j];
       let smallest_distance = 10000000;
       let idx = 0;
 
@@ -42,10 +42,10 @@ const kmeansClustering = (points, k, min_diff) => {
 
     let diff = 0;
     for (let i = 0; i < k; i++) {
-      let old = clusters[i];
-      let center = calculateCenter(plists[i], 3);
-      let new_cluster = [center, plists[i]];
-      let dist = euclidean(old[0], center);
+      const old = clusters[i];
+      const center = calculateCenter(plists[i], 3);
+      const new_cluster = [center, plists[i]];
+      const dist = euclidean(old[0], center);
       clusters[i] = new_cluster;
       diff = diff > dist ? diff : dist;
     }
@@ -62,13 +62,12 @@ const euclidean = (p1, p2) => {
   for (let i = 0; i < length; i++) {
     s += (p1[i] - p2[i]) * (p1[i] - p2[i]);
   }
-
   return s ** 0.5;
 };
 
 const calculateCenter = (points, n) => {
-  let vals = new Array(n).fill(0);
-  let plen = points.length;
+  const vals = new Array(n).fill(0);
+  const plen = points.length;
 
   if (plen === 0) {
     return [128, 128, 128];
