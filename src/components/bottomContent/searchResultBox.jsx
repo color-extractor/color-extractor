@@ -16,7 +16,7 @@ function SearchResultBox({ hexColorArray, loading }) {
   return (
     <>
       {hexColorArray && (
-        <div className="flex bg-gray-800 h-40 p-2 mt-16 w-full overflow-hidden items-center">
+        <div className="flex bg-black h-80 p-2 mt-8 w-full overflow-hidden items-center">
           {hexColorArray.map((color, index) => (
             <ColorBox
               key={index}
@@ -26,6 +26,17 @@ function SearchResultBox({ hexColorArray, loading }) {
           ))}
         </div>
       )}
+      {/* {hexColorArray && (
+        <div className="flex bg-black h-80 p-2 mt-8 w-full overflow-hidden items-center">
+          <div className="w-1/5 h-72 m-3 mb-3 bg-mainColor">
+            <div className="w-40 h-44 m-3 mb-3  bg-white">
+              <div className="w-1/5 h-20 m-3 text-white" />
+            </div>
+            <p className="text-white font-medium tracking-wide mt-4">#ffffff</p>
+            <p className="text-white mt-4">RGB(255, 255, 255)</p>
+          </div>
+        </div>
+      )} */}
     </>
   );
 }

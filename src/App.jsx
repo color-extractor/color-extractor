@@ -31,7 +31,10 @@ function App() {
 
   return (
     <>
-      <h2>Color Extractor</h2>
+      {/* <header className="text-white w-full bg-white">header</header> */}
+      <h2 className="text-white mt-2 text-3xl font-semibold">
+        대표 색상을 확인해보세요
+      </h2>
       <SearchInputBox onSearch={fetchRgbData} />
       <SearchResultBox
         hexColorArray={hexColorArray}

@@ -18,10 +18,10 @@ function SearchInputBox({ onSearch }) {
   };
 
   return (
-    <div className="flex items-center gap-2 bg-gray-300">
+    <div className="flex items-center gap-2 mt-12 bg-white">
       <input
         type="text"
-        className="flex-1 bg-gray-300 ml-2 text-black outline-none"
+        className="flex-1 ml-2 text-black outline-none"
         value={url}
         onChange={(event) => {
           handleInputUrl(event);
@@ -32,7 +32,7 @@ function SearchInputBox({ onSearch }) {
         placeholder="url을 입력해주세요"
       />
       <button
-        className="bg-black p-2 text-white"
+        className="bg-mainColor p-2 text-white"
         onClick={handleSearch}
       >
         search
