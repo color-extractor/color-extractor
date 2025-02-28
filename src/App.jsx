@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import SearchResultBox from "./components/bottomContent/searchResultBox";
 import SearchInputBox from "./components/topContent/searchInputBox";
-import { SERVER_URL } from "./constants/constants";
+import { SERVER_URL } from "./config/constants";
 import getMainColor from "./utils/getMainColor";
 
 function App() {
