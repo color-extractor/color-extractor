@@ -7,6 +7,12 @@ export default {
         mainColor: "#2a2a2a",
         mainBgColor: "#121212",
       },
+      fontWeight: {
+        extrabold: "1000",
+      },
+      rotate: {
+        "y-180": "180deg",
+      },
     },
   },
   plugins: [],

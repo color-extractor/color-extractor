@@ -1,3 +1,5 @@
+import colorConvert from "color-convert";
+
 import kmeansClustering from "../utils/kmeansClustering";
 
 const getMainColor = (rgbArray) => {
@@ -8,7 +10,9 @@ const getMainColor = (rgbArray) => {
     length: cluster[1].length,
   }));
 
-  const sortedObjectCluster = objectClusters.sort((a, b) => b.size - a.size);
+  const sortedObjectCluster = objectClusters.sort(
+    (a, b) => b.length - a.length
+  );
 
   const hexColorArray = sortedObjectCluster.map((cluster) => ({
     hex: rgbToHex(cluster.color),
@@ -19,11 +23,10 @@ const getMainColor = (rgbArray) => {
 };
 
 export const rgbToHex = (rgb) => {
-  const th = (i) => {
-    const h = Math.round(i).toString(16);
-    return h.length === 1 ? "0" + h : h;
-  };
-  const hex = `#${th(rgb[0])}${th(rgb[1])}${th(rgb[2])}`;
+  if (!Array.isArray(rgb) || rgb.length < 3) {
+    throw "#000000";
+  }
+  const hex = `#${colorConvert.rgb.hex(rgb)}`;
 
   return hex;
 };

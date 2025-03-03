@@ -13,10 +13,27 @@ function SearchResultBox({ hexColorArray, loading }) {
       </div>
     );
   }
+
+  const backgroundGradientColor = {
+    background: `linear-gradient(
+    to right,
+      #121212 5%,
+      ${hexColorArray[0] ? hexColorArray[0].hex : "#121212"} 25%,
+      ${hexColorArray[1] ? hexColorArray[1].hex : "#121212"} 40%,
+      ${hexColorArray[2] ? hexColorArray[2].hex : "#121212"} 60%,
+      ${hexColorArray[3] ? hexColorArray[3].hex : "#121212"} 80%,
+      ${hexColorArray[4] ? hexColorArray[4].hex : "#121212"} 100%)`,
+  };
+
   return (
     <>
       {hexColorArray && (
-        <div className="flex bg-black h-80 p-2 mt-8 w-full overflow-hidden items-center">
+        <div
+          className="relative flex h-96 left-0 mt-20 overflow-hidden items-center justify-center"
+          style={backgroundGradientColor}
+        >
+          <div className="absolute inset-0 bg-black opacity-30 z-0"></div>
+
           {hexColorArray.map((color, index) => (
             <ColorBox
               key={index}
@@ -26,17 +43,6 @@ function SearchResultBox({ hexColorArray, loading }) {
           ))}
         </div>
       )}
-      {/* {hexColorArray && (
-        <div className="flex bg-black h-80 p-2 mt-8 w-full overflow-hidden items-center">
-          <div className="w-1/5 h-72 m-3 mb-3 bg-mainColor">
-            <div className="w-40 h-44 m-3 mb-3  bg-white">
-              <div className="w-1/5 h-20 m-3 text-white" />
-            </div>
-            <p className="text-white font-medium tracking-wide mt-4">#ffffff</p>
-            <p className="text-white mt-4">RGB(255, 255, 255)</p>
-          </div>
-        </div>
-      )} */}
     </>
   );
 }
