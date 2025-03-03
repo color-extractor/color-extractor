@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ColorBox({ color, rank }) {
+function ColorBox({ color }) {
   const [copy, setCopy] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -18,7 +18,7 @@ function ColorBox({ color, rank }) {
         onMouseLeave={() => setIsFlipped(false)}
       >
         <div
-          className={`relative w-full h-full transition-transform duration-500 preserve-3d ${isFlipped ? "rotate-180" : ""}`}
+          className={`relative w-full h-full transition-transform duration-700 preserve-3d ${isFlipped ? "rotate-180" : ""}`}
         >
           <div
             className="absolute w-full h-full shadow-2xl flex items-center justify-center rounded-2xl backface-hidden"
@@ -31,8 +31,8 @@ function ColorBox({ color, rank }) {
               onClick={() => copyClipboardText(color.hex)}
               onTouchStart={() => copyClipboardText(color.hex)}
             >
-              <p className="text-white mt-48">
-                {copy ? "copy" : `${rank}.${color.hex}(${color.size})`}
+              <p className="text-white text-lg font-semibold mt-48">
+                {copy ? "copy" : `${color.hex}(${color.size})`}
               </p>
             </div>
           </div>

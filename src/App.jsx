@@ -9,9 +9,13 @@ import getMainColor from "./utils/getMainColor";
 function App() {
   const [hexColorArray, setHexColorArray] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [inputUrl, setInputUrl] = useState("");
 
   const fetchRgbData = async (url) => {
     setLoading(true);
+    setHexColorArray([]);
+    setInputUrl(checkUrl(url));
+
     const encodedUrl = encodeURIComponent(checkUrl(url));
     const response = await fetch(`${SERVER_URL}/crawl/${encodedUrl}`);
     const jsonResponseData = await response.json();
@@ -29,8 +33,8 @@ function App() {
     }
   };
 
-  const backgroundColor =
-    hexColorArray.length > 0 ? hexColorArray[1].hex : "#2a2a2a";
+  const topBackgroundColor =
+    loading || hexColorArray.length === 0 ? "#2a2a2a" : hexColorArray[1].hex;
 
   return (
     <>
@@ -49,11 +53,13 @@ function App() {
           <div
             className="absolute inset-0 w-full"
             style={{
-              background: `linear-gradient(to top, #121212, ${backgroundColor})`,
+              background: `linear-gradient(to top, #121212, ${topBackgroundColor})`,
             }}
           ></div>
-          <h2 className="relative text-white mt-2 text-4xl font-extrabold">
-            대표 색상을 확인해보세요
+          <h2 className="relative text-white mt-2 text-5xl font-extrabold">
+            {hexColorArray.length > 0
+              ? getDomain(inputUrl)
+              : "대표 색상을 확인해보세요"}
           </h2>
         </div>
         <SearchInputBox onSearch={fetchRgbData} />
@@ -64,6 +70,13 @@ function App() {
       </div>
     </>
   );
+}
+
+function getDomain(url) {
+  const hostname = new URL(url).hostname;
+  const domainData = hostname.replace(/^www\./, "").split(".");
+
+  return domainData.length > 1 ? domainData[0] : hostname;
 }
 
 export default App;
