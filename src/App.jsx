@@ -26,15 +26,20 @@ function App() {
   };
 
   const checkUrl = (url) => {
-    if (url.startsWith("www.")) {
-      return `https://${url}`;
-    } else if (url.startsWith("https")) {
+    if (!url) {
+      return "";
+    }
+    if (url.startsWith("https://") || url.startsWith("http://")) {
       return url;
     }
+    if (url.startsWith("www.")) {
+      return `https://${url}`;
+    }
+    return `https://www.${url}`;
   };
 
   const topBackgroundColor =
-    loading || hexColorArray.length === 0 ? "#2a2a2a" : hexColorArray[1].hex;
+    loading || hexColorArray.length === 0 ? "#2a2a2a" : hexColorArray[0].hex;
 
   return (
     <>
