@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./App.css";
 import SearchResultBox from "./components/bottomContent/searchResultBox";
 import SearchInputBox from "./components/topContent/searchInputBox";
-import { SERVER_URL } from "./config/constants";
 import getMainColor from "./utils/getMainColor";
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
     setInputUrl(checkUrl(url));
 
     const encodedUrl = encodeURIComponent(checkUrl(url));
-    const response = await fetch(`${SERVER_URL}/crawl/${encodedUrl}`);
+    const response = await fetch(`/api/crawl/${encodedUrl}`);
     const jsonResponseData = await response.json();
     const mainColor = getMainColor(jsonResponseData["data"]) || [];
 
