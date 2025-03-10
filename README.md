@@ -116,7 +116,7 @@ if (
 
 여기서 활용한 개념이 **데이터 증강(Data Augmentation)**이었습니다. 머신러닝분야에서 모델을 개발할 때 특정 데이터를 증강시켜 모델의 학습 효과를 높이는 것처럼, 중요도가 높은 색상을 인위적으로 여러 번 리스트에 추가하여 대표 색상 분석에 더 큰 영향을 미치도록 했습니다. 예를 들어, h1, 로고나 파비콘과 유사한 색상이 있으면 200번 반복하여 추가하는 식이었습니다. 단순 빈도 기반 분석이 아니라, 디자인적으로 중요한 요소의 색상을 더욱 강조할 수 있도록 데이터를 조작하는 방식이었습니다.
 
-[](https://github.com/user-attachments/assets/c4d37513-49f5-4d65-8a6e-e42d23878904)
+![Image](https://github.com/user-attachments/assets/bf7e4a6c-3fdf-4817-ae90-6eaa41153b7f)
 
 이 방식을 적용하자, 대표 색상 분석 결과가 훨씬 안정적으로 나왔습니다. 단순히 가장 많이 등장하는 색상이 아니라, 실제로 웹사이트에서 중요한 색상이 대표 색상으로 선정되는 비율이 증가했고, 배경색이 너무 강하게 반영되는 문제도 완화되었습니다. 하지만 여전히 한계는 있었습니다. 웹사이트마다 중요한 요소가 다를 수 있어 특정 요소에 가중치를 부여하는 방식이 항상 적절한 것은 아니었고, 디자인이 단순한 경우에는 배경색이 강하게 반영될 가능성이 있었습니다. 또한, 다크 모드를 지원하는 웹사이트에서는 별도의 처리가 필요했기 때문에, UI 패턴을 자동으로 분석하고, 웹사이트 구조에 따라 가중치를 동적으로 조정하는 방식도 고려할 필요가 있었습니다. 하지만 현재 구현한 방식만으로도 단순히 `getComputedStyle()`로 모든 색상을 가져와서 분석하는 것보다 훨씬 의미 있는 색상 데이터를 도출할 수 있었고, 웹사이트의 핵심 색상을 보다 정확하게 반영할 수 있었습니다.
 
@@ -219,9 +219,9 @@ await page.evaluate(() => matchMedia("(prefers-color-scheme: light)").matches);
 
 ---
 
-[](https://github.com/user-attachments/assets/d7120c19-a566-488a-8b9f-9af49e51a7d0)
+![Image](https://github.com/user-attachments/assets/f3811c09-c96c-45a5-9f52-8afeb004e135)
 
-[](https://github.com/user-attachments/assets/2b54ffd4-235e-4ca9-9866-98a43c254c58)
+![Image](https://github.com/user-attachments/assets/95414ed3-38f5-42e8-9aa7-f26394d0dcb8)
 
 ## 3-8. K-means Clustering을 이용한 대표 색상 추출 방식과 문제 해결
 
@@ -229,7 +229,7 @@ await page.evaluate(() => matchMedia("(prefers-color-scheme: light)").matches);
 
 ### 3-8-1. K-means Clustering이란?
 
-[](https://github.com/user-attachments/assets/f30f7f88-e745-4124-b564-3b1acca7a291)
+![Image](https://github.com/user-attachments/assets/8b86f7be-f20f-4fc0-b40e-413700747c0c)
 
 K-means는 데이터 포인트들을 K개의 그룹으로 나누는 비지도 학습 알고리즘으로, 초기에는 K개의 중심점을 랜덤하게 설정한 후, 각 데이터 포인트를 가장 가까운 중심점에 할당하여 클러스터를 형성한 뒤, 각 클러스터의 평균을 계산하여 새로운 중심점을 설정하는 과정을 반복하는 방식으로 작동합니다. 이를 색상 분석에 적용하면 비슷한 색상들을 하나의 그룹으로 묶고, 각 그룹의 대표 색상을 선정할 수 있었습니다.
 
