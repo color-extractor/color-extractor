@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ReactGA from "react-ga4";
 
 import "./App.css";
 import SearchResultBox from "./components/bottomContent/searchResultBox";
@@ -10,6 +11,13 @@ function App() {
   const [hexColorArray, setHexColorArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+    });
+  }, []);
 
   const fetchRgbData = async (url) => {
     setLoading(true);

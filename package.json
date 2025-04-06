@@ -15,6 +15,7 @@
     "color-convert": "^3.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-ga4": "^2.1.0",
     "react-spinners": "^0.15.0"
   },
   "devDependencies": {
