@@ -1,3 +1,4 @@
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 function SearchInputBox({ onSearch }) {
@@ -18,10 +19,10 @@ function SearchInputBox({ onSearch }) {
   };
 
   return (
-    <div className="flex items-center gap-2 mt-12 bg-white">
+    <div className="flex items-center p-0 m-auto w-1/2 h-14 top-10 rounded-lg gap-2 mt-12 z-10 relative bg-white">
       <input
         type="text"
-        className="flex-1 ml-2 text-black outline-none"
+        className="flex-1 ml-2 text-black outline-none text-xl"
         value={url}
         onChange={(event) => {
           handleInputUrl(event);
@@ -32,10 +33,10 @@ function SearchInputBox({ onSearch }) {
         placeholder="url을 입력해주세요"
       />
       <button
-        className="bg-mainColor p-2 text-white"
+        className="p-4"
         onClick={handleSearch}
       >
-        search
+        <MagnifyingGlassIcon className="w-6 h-6 text-mainColor" />
       </button>
     </div>
   );

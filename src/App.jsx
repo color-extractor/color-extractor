@@ -46,12 +46,9 @@ function App() {
     return `https://www.${url}`;
   };
 
-  const topBackgroundColor =
-    loading || hexColorArray.length === 0 ? "#2a2a2a" : hexColorArray[0].hex;
-
   return (
     <>
-      <header className="fixed top-0 left-0 w-full h-8 md:h-12 bg-black text-white flex items-center p-4 z-50">
+      <header className="fixed top-0 left-0 w-full h-10 md:h-12 bg-black text-white flex items-center p-4 z-50">
         <h1 className="text-lg font-bold">
           <img
             src="/tempWhitelogo.png"
@@ -62,16 +59,10 @@ function App() {
         </h1>
       </header>
       <div className="left-0">
-        <div className="relative w-full h-24 mt-0 p-10">
-          <div
-            className="absolute inset-0 w-full"
-            style={{
-              background: `linear-gradient(to top, #121212, ${topBackgroundColor})`,
-            }}
-          ></div>
-          <h2 className="relative text-white mt-2 text-5xl font-extrabold">
+        <div className="relative w-full h-24 mt-0 p-10 top-10">
+          <h2 className="relative z-10 text-white mt-2 tracking-wide text-5xl font-bold">
             {hexColorArray.length > 0
-              ? getDomain(inputUrl)
+              ? getDomain(inputUrl) + " 대표 색상이에요"
               : "대표 색상을 확인해보세요"}
           </h2>
         </div>

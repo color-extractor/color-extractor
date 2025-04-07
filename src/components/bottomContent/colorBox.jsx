@@ -13,7 +13,7 @@ function ColorBox({ color }) {
   return (
     <>
       <div
-        className="group relative w-48 h-64 m-6 flex items-center justify-center perspective-1000"
+        className="group relative w-48 h-64 top-12 m-6 flex items-center justify-center overflow-hidden perspective-1000"
         onMouseEnter={() => setIsFlipped(true)}
         onMouseLeave={() => setIsFlipped(false)}
       >
