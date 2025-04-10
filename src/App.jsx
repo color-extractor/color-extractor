@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 
 import "./App.css";
-import SearchResultBox from "./components/bottomContent/SearchResultBox";
-import SearchInputBox from "./components/topContent/SearchInputBox";
 import { SERVER_URL } from "./config/constants";
+// import SearchResultBox from "./components/bottomContent/SearchResultBox";
+// import SearchInputBox from "./components/topContent/SearchInputBox";
+import HomePage from "./pages/HomePage";
+import ResultPage from "./pages/ResultPage";
 import getMainColor from "./utils/getMainColor";
 
 function App() {
   const [hexColorArray, setHexColorArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
+  const hasResultColorData = hexColorArray.length > 0;
 
   useEffect(() => {
     ReactGA.send({
@@ -22,9 +25,10 @@ function App() {
   const fetchRgbData = async (url) => {
     setLoading(true);
     setHexColorArray([]);
-    setInputUrl(checkUrl(url));
+    const checkedUrl = checkUrl(url);
+    setInputUrl(checkedUrl);
 
-    const encodedUrl = encodeURIComponent(checkUrl(url));
+    const encodedUrl = encodeURIComponent(checkedUrl);
     const response = await fetch(`${SERVER_URL}/crawl/${encodedUrl}`);
     const jsonResponseData = await response.json();
     const mainColor = getMainColor(jsonResponseData["data"]) || [];
@@ -45,7 +49,7 @@ function App() {
     }
     return `https://www.${url}`;
   };
-
+  console.log("App loading:", loading);
   return (
     <>
       <header className="fixed top-0 left-0 w-full h-10 md:h-12 bg-black text-white flex items-center p-4 z-50">
@@ -58,29 +62,24 @@ function App() {
           color-X
         </h1>
       </header>
-      <div className="left-0">
-        <div className="relative w-full h-24 mt-0 p-10 top-10">
-          <h2 className="relative z-10 text-white mt-2 tracking-wide text-5xl font-bold">
-            {hexColorArray.length > 0
-              ? getDomain(inputUrl) + " 대표 색상이에요"
-              : "대표 색상을 확인해보세요"}
-          </h2>
-        </div>
-        <SearchInputBox onSearch={fetchRgbData} />
-        <SearchResultBox
-          hexColorArray={hexColorArray}
-          loading={loading}
-        />
-      </div>
+
+      <main>
+        {hasResultColorData || loading ? (
+          <ResultPage
+            hexColorArray={hexColorArray}
+            inputUrl={inputUrl}
+            loading={loading}
+            onSearch={fetchRgbData}
+          />
+        ) : (
+          <HomePage
+            onSearch={fetchRgbData}
+            loading={loading}
+          />
+        )}
+      </main>
     </>
   );
-}
-
-function getDomain(url) {
-  const hostname = new URL(url).hostname;
-  const domainData = hostname.replace(/^www\./, "").split(".");
-
-  return domainData.length > 1 ? domainData[0] : hostname;
 }
 
 export default App;
