@@ -1,4 +1,4 @@
-import ColorBox from "./colorBox";
+import ColorBox from "./ColorBox";
 
 function SearchResultBox({ hexColorArray, loading }) {
   if (loading) {
@@ -32,7 +32,6 @@ function SearchResultBox({ hexColorArray, loading }) {
     <>
       {hexColorArray && (
         <div
-          // className="relative flex h-96 left-0 mt-20 overflow-hidden items-center justify-center"
           className="fixed top-10 left-0 w-screen h-screen z-0 flex items-center justify-center"
           style={backgroundGradientColor}
         >

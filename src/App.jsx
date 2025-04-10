@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 
 import "./App.css";
-import SearchResultBox from "./components/bottomContent/searchResultBox";
-import SearchInputBox from "./components/topContent/searchInputBox";
+import SearchResultBox from "./components/bottomContent/SearchResultBox";
+import SearchInputBox from "./components/topContent/SearchInputBox";
 import { SERVER_URL } from "./config/constants";
 import getMainColor from "./utils/getMainColor";
 
