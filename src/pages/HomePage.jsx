@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import ColorBox from "../components/bottomContent/colorBox";
-import SearchInputBox from "../components/topContent/SearchInputBox";
+import SearchInputBox from "../components/topContent/searchInputBox";
 
 function getRandomHex() {
   const hex = Math.floor(Math.random() * 0xffffff)

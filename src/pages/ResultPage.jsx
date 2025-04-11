@@ -1,5 +1,5 @@
 import SearchResultBox from "../components/bottomContent/searchResultBox";
-import SearchInputBox from "../components/topContent/SearchInputBox";
+import SearchInputBox from "../components/topContent/searchInputBox";
 
 function ResultPage({ inputUrl, hexColorArray, loading, onSearch }) {
   const getDomain = (url) => {
