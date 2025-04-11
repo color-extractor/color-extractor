@@ -1,4 +1,4 @@
-import SearchResultBox from "../components/bottomContent/SearchResultBox";
+import SearchResultBox from "../components/bottomContent/searchResultBox";
 import SearchInputBox from "../components/topContent/SearchInputBox";
 
 function ResultPage({ inputUrl, hexColorArray, loading, onSearch }) {
