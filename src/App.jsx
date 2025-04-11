@@ -51,13 +51,13 @@ function App() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full h-10 md:h-12 bg-mainBgColor text-white flex items-center p-4 z-50">
-        <h1 className="text-lg font-bold">
+        <h1 className="text-xl font-bold">
           <img
-            src="/tempWhitelogo.png"
+            src="/whitelogo.png"
             alt="Logo"
             className="w-6 ml-6 mb-1 mr-2 h-auto inline-block"
           />
-          color-X
+          color-x
         </h1>
       </header>
 
