@@ -1,5 +1,5 @@
 import Skeleton from "../UI/Skeleton";
-import ColorBox from "./ColorBox";
+import ColorBox from "./colorBox";
 
 function SearchResultBox({ hexColorArray, loading }) {
   if (loading) {

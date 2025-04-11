@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ColorBox from "../components/bottomContent/ColorBox";
+import ColorBox from "../components/bottomContent/colorBox";
 import SearchInputBox from "../components/topContent/SearchInputBox";
 
 function getRandomHex() {
