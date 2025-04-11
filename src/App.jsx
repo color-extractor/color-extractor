@@ -11,6 +11,8 @@ function App() {
   const [hexColorArray, setHexColorArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
   const hasResultColorData = hexColorArray.length > 0;
 
   useEffect(() => {
@@ -18,6 +20,15 @@ function App() {
       hitType: "pageview",
       page: window.location.pathname,
     });
+
+    const checkIsMobile = () => {
+      const isNowMobile = window.innerWidth < 768;
+      setIsMobile(isNowMobile);
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   const fetchRgbData = async (url) => {
@@ -62,7 +73,14 @@ function App() {
       </header>
 
       <main>
-        {hasResultColorData || loading ? (
+        {isMobile ? (
+          <div className="min-h-screen flex items-center justify-center text-white bg-black px-4 text-center">
+            <p className="text-2xl">
+              모바일 화면은 현재 준비 중입니다. <br /> 데스크탑에서
+              이용해주세요.
+            </p>
+          </div>
+        ) : hasResultColorData || loading ? (
           <ResultPage
             hexColorArray={hexColorArray}
             inputUrl={inputUrl}
