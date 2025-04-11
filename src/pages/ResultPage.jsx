@@ -1,5 +1,4 @@
-// import SearchResultBox from "../components/bottomContent/SearchResultBox";
-import SearchResultBox from "../components/bottomContent/searchResultBox";
+import SearchResultBox from "../components/bottomContent/SearchResultBox";
 import SearchInputBox from "../components/topContent/SearchInputBox";
 
 function ResultPage({ inputUrl, hexColorArray, loading, onSearch }) {
@@ -19,10 +18,12 @@ function ResultPage({ inputUrl, hexColorArray, loading, onSearch }) {
             : " 대표 색상을 추출하는 중이에요"}
         </h2>
       </div>
-      <SearchInputBox
-        onSearch={onSearch}
-        loading={loading}
-      />
+      <div className="mt-16 w-full max-w-xl mx-auto">
+        <SearchInputBox
+          onSearch={onSearch}
+          loading={loading}
+        />
+      </div>
       <SearchResultBox
         hexColorArray={hexColorArray}
         loading={loading}

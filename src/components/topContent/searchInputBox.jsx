@@ -19,7 +19,7 @@ function SearchInputBox({ onSearch }) {
   };
 
   return (
-    <div className="flex items-center p-0 m-auto w-1/2 h-14 top-10 rounded-lg gap-2 mt-12 z-10 relative bg-white">
+    <div className="flex items-center h-14 rounded-lg gap-2 z-10 relative bg-white">
       <input
         type="text"
         className="flex-1 ml-2 text-black outline-none text-xl"

@@ -1,6 +1,6 @@
 function Skeleton() {
   return (
-    <div className="relative flex h-96 left-0 mt-20 z-20 overflow-hidden items-center justify-center">
+    <div className="relative flex top-10 h-96 left-0 z-20 overflow-hidden items-center justify-center">
       <div className="flex gap-4">
         {new Array(5).fill(null).map((_, index) => (
           <div

@@ -3,8 +3,6 @@ import ReactGA from "react-ga4";
 
 import "./App.css";
 import { SERVER_URL } from "./config/constants";
-// import SearchResultBox from "./components/bottomContent/SearchResultBox";
-// import SearchInputBox from "./components/topContent/SearchInputBox";
 import HomePage from "./pages/HomePage";
 import ResultPage from "./pages/ResultPage";
 import getMainColor from "./utils/getMainColor";
@@ -49,10 +47,10 @@ function App() {
     }
     return `https://www.${url}`;
   };
-  console.log("App loading:", loading);
+
   return (
     <>
-      <header className="fixed top-0 left-0 w-full h-10 md:h-12 bg-black text-white flex items-center p-4 z-50">
+      <header className="fixed top-0 left-0 w-full h-10 md:h-12 bg-mainBgColor text-white flex items-center p-4 z-50">
         <h1 className="text-lg font-bold">
           <img
             src="/tempWhitelogo.png"
