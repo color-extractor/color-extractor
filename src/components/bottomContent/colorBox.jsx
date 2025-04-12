@@ -17,7 +17,7 @@ function ColorBox({ color, isLarge = false }) {
   return (
     <>
       <div
-        className={`group relative ${boxSize} m-6 flex items-center justify-center overflow-hidden perspective-1000`}
+        className={`group relative ${boxSize} m-6 flex items-center justify-center perspective-1000`}
         onMouseEnter={() => setIsFlipped(true)}
         onMouseLeave={() => setIsFlipped(false)}
       >
