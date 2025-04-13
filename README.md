@@ -1,6 +1,6 @@
 # 서비스 소개
 
-![Image](https://github.com/user-attachments/assets/6942280f-1a95-48a9-90e9-7b3cd7232a17)
+![Image](https://github.com/user-attachments/assets/5a5c2425-0e97-483b-ac3b-b3698b819972)
 
 color-x(color extractor)는 웹사이트에서 주요 색상을 추출하고, 특정 요소에 대한 가중치를 반영하여 대표적인 색상을 도출하는 웹애플리케이션 서비스입니다.
 
