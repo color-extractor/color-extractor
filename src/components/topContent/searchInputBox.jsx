@@ -23,10 +23,10 @@ function SearchInputBox({ onSearch, isMobile }) {
   };
 
   return (
-    <div className="flex items-center h-14 rounded-lg gap-2 z-10 relative bg-white">
+    <div className="flex w-full items-center h-14 rounded-lg gap-2 z-10 relative bg-white">
       <input
         type="text"
-        className="flex-1 ml-2 text-black outline-none text-xl"
+        className="flex-1 min-w-0 text-black outline-none text-xl px-3"
         value={url}
         onChange={(event) => {
           handleInputUrl(event);
@@ -44,7 +44,7 @@ function SearchInputBox({ onSearch, isMobile }) {
         }}
       />
       <button
-        className="p-4"
+        className="shrink-0 p-2"
         onClick={handleSearch}
       >
         <MagnifyingGlassIcon className="w-6 h-6 text-mainColor" />

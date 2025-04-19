@@ -35,12 +35,20 @@ function HomePage({ onSearch, loading, isMobile }) {
           </span>
         </h1>
 
-        <p className="text-base mt-3 sm:text-xl text-white">
+        <p className="text-base font-semibold mt-3 sm:text-xl text-white">
           URL만 입력하면, 대표 색상을 바로 확인할 수 있어요.
         </p>
         <p className="text-base sm:text-lg text-gray-300">
-          브랜드의 대표 색상을 빠르게 파악하고, 디자인이나 마케팅에
-          활용해보세요.
+          <span className="block md:hidden">
+            브랜드의 대표 색상을 빠르게 파악하고,
+            <br />
+            디자인이나 마케팅에 활용해보세요.
+          </span>
+
+          <span className="hidden md:block">
+            브랜드의 대표 색상을 빠르게 파악하고, 디자인이나 마케팅에
+            활용해보세요.
+          </span>
         </p>
         <div className="md:mt-2 md:w-full">
           <SearchInputBox

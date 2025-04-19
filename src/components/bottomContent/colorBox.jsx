@@ -11,7 +11,7 @@ function ColorBox({ color, isLarge = false }) {
   };
 
   const boxSize = isLarge
-    ? "w-[28rem] h-[20rem] md:w-80 md:h-96 xl:w-80 xl:h-96"
+    ? "w-[20rem] h-[24rem] md:w-80 md:h-96 xl:w-80 xl:h-96"
     : "w-48 h-64";
 
   return (
@@ -20,6 +20,7 @@ function ColorBox({ color, isLarge = false }) {
         className={`group relative ${boxSize} m-6 flex items-center justify-center perspective-1000`}
         onMouseEnter={() => setIsFlipped(true)}
         onMouseLeave={() => setIsFlipped(false)}
+        onTouchStart={() => setIsFlipped((prev) => !prev)}
       >
         <div
           className={`relative w-full h-full transition-transform duration-700 preserve-3d ${isFlipped ? "rotate-180" : ""}`}
