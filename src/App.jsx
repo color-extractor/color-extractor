@@ -73,7 +73,7 @@ function App() {
       </header>
 
       <main>
-        {isMobile ? (
+        {/* {isMobile ? (
           <div className="min-h-screen flex items-center justify-center text-white bg-black px-4 text-center">
             <p className="text-2xl">
               모바일 화면은 현재 준비 중입니다. <br /> 데스크탑에서
@@ -91,6 +91,21 @@ function App() {
           <HomePage
             onSearch={fetchRgbData}
             loading={loading}
+          />
+        )} */}
+
+        {hasResultColorData || loading ? (
+          <ResultPage
+            hexColorArray={hexColorArray}
+            inputUrl={inputUrl}
+            loading={loading}
+            onSearch={fetchRgbData}
+          />
+        ) : (
+          <HomePage
+            onSearch={fetchRgbData}
+            loading={loading}
+            isMobile={isMobile}
           />
         )}
       </main>

@@ -10,7 +10,7 @@ function getRandomHex() {
   return `#${hex}`;
 }
 
-function HomePage({ onSearch, loading }) {
+function HomePage({ onSearch, loading, isMobile }) {
   const [mainColor, setMainColor] = useState(() => ({
     hex: getRandomHex(),
     size: 0,
@@ -27,10 +27,14 @@ function HomePage({ onSearch, loading }) {
         <h1 className="text-3xl md:text-6xl xl:text-7xl font-bold tracking-wide md:leading-tight xl:leading-tight">
           브랜드의
           <br />
-          대표 색상을
-          <br />
-          확인해보세요
+          <span className="block md:hidden">대표 색상을 확인해보세요</span>
+          <span className="hidden md:block">
+            대표 색상을
+            <br />
+            확인해보세요
+          </span>
         </h1>
+
         <p className="text-base mt-3 sm:text-xl text-white">
           URL만 입력하면, 대표 색상을 바로 확인할 수 있어요.
         </p>
@@ -42,6 +46,7 @@ function HomePage({ onSearch, loading }) {
           <SearchInputBox
             onSearch={onSearch}
             loading={loading}
+            isMobile={isMobile}
           />
         </div>
       </div>

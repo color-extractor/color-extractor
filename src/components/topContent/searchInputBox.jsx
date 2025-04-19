@@ -1,10 +1,14 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
-function SearchInputBox({ onSearch }) {
+function SearchInputBox({ onSearch, isMobile }) {
   const [url, setUrl] = useState("");
 
   const handleSearch = async () => {
+    if (isMobile) {
+      alert("모바일 기능은 아직 준비 중이에요. 데스크탑에서 이용해 주세요!");
+      return;
+    }
     if (url.trim() === "") {
       return;
     }
@@ -31,6 +35,13 @@ function SearchInputBox({ onSearch }) {
           handleInputUrl(event);
         }}
         placeholder="url을 입력해주세요"
+        onClick={() => {
+          if (isMobile) {
+            alert(
+              "모바일 기능은 아직 준비 중이에요. 데스크탑에서 이용해 주세요!"
+            );
+          }
+        }}
       />
       <button
         className="p-4"
