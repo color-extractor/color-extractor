@@ -6,7 +6,7 @@ function SearchInputBox({ onSearch, isMobile }) {
 
   const handleSearch = async () => {
     if (isMobile) {
-      alert("모바일 기능은 아직 준비 중이에요. 데스크탑에서 이용해 주세요!");
+      alert("모바일 기능은 아직 준비 중이에요. 데스크탑에서 이용해 주세요.");
       return;
     }
     if (url.trim() === "") {
@@ -28,6 +28,7 @@ function SearchInputBox({ onSearch, isMobile }) {
         type="text"
         className="flex-1 min-w-0 text-black outline-none text-xl px-3"
         value={url}
+        readOnly={isMobile}
         onChange={(event) => {
           handleInputUrl(event);
         }}
@@ -38,7 +39,7 @@ function SearchInputBox({ onSearch, isMobile }) {
         onClick={() => {
           if (isMobile) {
             alert(
-              "모바일 기능은 아직 준비 중이에요. 데스크탑에서 이용해 주세요!"
+              "모바일 기능은 아직 준비 중이에요. 데스크탑에서 이용해 주세요."
             );
           }
         }}
