@@ -55,9 +55,10 @@ color-x(color extractor)는 웹사이트에서 주요 색상을 추출하고, �
 
 |                                                                                                                             |     |
 | --------------------------------------------------------------------------------------------------------------------------- | --- |
-| <img src="https://github.com/user-attachments/assets/916fc955-a3e7-4f21-8889-d317166773d2" alt="로고 이미지" width="300px"> |     |
-| <img src="https://github.com/user-attachments/assets/19fff4e8-5979-45e6-8c75-ca675c82633c" alt="로고 이미지" width="300px"> |     |
-| <img src="https://github.com/user-attachments/assets/27d506fd-5061-41c4-9716-06a809d3df4f" alt="로고 이미지" width="100px"> |     |
+| <img src="https://github.com/user-attachments/assets/c7ffb216-487a-4b41-aa83-5b78a5359c4c" alt="URL 입력" width="60%"> |     |
+| <img src="https://github.com/user-attachments/assets/df29fd78-de16-498b-beee-83166cc3c774" alt="색상 추출" width="60%"> |     |
+| <img src="https://github.com/user-attachments/assets/8e215446-4ed0-4ac7-9680-a050155f3b54" alt="색상 코드 복사" width="210px" height="300px"> |     |
+
 
 ---
 
