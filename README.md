@@ -53,12 +53,30 @@ color-x(color extractor)는 웹사이트에서 주요 색상을 추출하고, �
 
 # 2. 기능
 
-|                                                                                                                             |     |
-| --------------------------------------------------------------------------------------------------------------------------- | --- |
-| <img src="https://github.com/user-attachments/assets/c7ffb216-487a-4b41-aa83-5b78a5359c4c" alt="URL 입력" width="60%"> |     |
-| <img src="https://github.com/user-attachments/assets/df29fd78-de16-498b-beee-83166cc3c774" alt="색상 추출" width="60%"> |     |
-| <img src="https://github.com/user-attachments/assets/8e215446-4ed0-4ac7-9680-a050155f3b54" alt="색상 코드 복사" width="210px" height="300px"> |     |
-
+<table>
+  <tr>
+    <th style="width: 60%;">기능</th>
+    <th style="width: 60%;">설명</th>
+  </tr>
+  <tr>
+    <td>
+     <img src="https://github.com/user-attachments/assets/c7ffb216-487a-4b41-aa83-5b78a5359c4c" alt="URL 입력"> 
+    </td>
+    <td>사용자가 분석하고 싶은 웹사이트 주소를 입력합니다.</td>
+  </tr>
+  <tr>
+    <td>
+     <img src="https://github.com/user-attachments/assets/df29fd78-de16-498b-beee-83166cc3c774" alt="색상 추출"> 
+    </td>
+    <td>입력된 웹페이지에서 대표 색상을 추출합니다.</td>
+  </tr>
+    <tr>
+    <td>
+     <img src="https://github.com/user-attachments/assets/8e215446-4ed0-4ac7-9680-a050155f3b54" alt="색상 코드 복사" width="210px"> 
+    </td>
+    <td>추출된 색상 박스를 클릭하면 hex 코드가 클립보드에 복사됩니다.</td>
+  </tr>
+</table>
 
 ---
 
